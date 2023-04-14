@@ -24,7 +24,7 @@ class DiscordSender:
         self.host_name = socket.gethostname()
         pass
 
-    def send_message(self, text: str):
+    def _send_message(self, text: str):
         headers = {'Content-Type': 'application/json'}
         payload = json.dumps({'content': text})
         r = requests.post(url=self.webhook_url, data=payload, headers=headers)
@@ -59,7 +59,7 @@ class DiscordSender:
                                 'Main call: %s' % func_name,
                                 'Starting date: %s' % start_time.strftime(DATE_FORMAT)]
                     text = '\n'.join(contents)
-                    self.send_message(text=text)
+                    self._send_message(text=text)
 
                 try:
                     value = func(*args, **kwargs)
@@ -81,7 +81,7 @@ class DiscordSender:
                             contents.append('Main call returned value: %s'% "ERROR - Couldn't str the returned value.")
 
                         text = '\n'.join(contents)
-                        self.send_message(text=text)
+                        self._send_message(text=text)
 
                     return value
 
@@ -99,7 +99,7 @@ class DiscordSender:
                                 "Traceback:",
                                 '%s' % traceback.format_exc()]
                     text = '\n'.join(contents)
-                    self.send_message(text=text)
+                    self._send_message(text=text)
                     raise ex
 
             return wrapper_sender
@@ -114,4 +114,4 @@ class DiscordSender:
         contents.append('Status: %s'% str(data))
 
         text = '\n'.join(contents)
-        self.send_message(text=text)
+        self._send_message(text=text)
