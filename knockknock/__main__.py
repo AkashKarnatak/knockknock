@@ -4,7 +4,7 @@ import subprocess
 from knockknock import (chime_sender,
                         desktop_sender,
                         dingtalk_sender,
-                        discord_sender,
+                        DiscordSender,
                         email_sender,
                         matrix_sender,
                         rocketchat_sender,
@@ -48,6 +48,7 @@ def main():
     discord_parser.add_argument(
         "--webhook-url", type=str, required=True,
         help="The webhook URL to access your Discord server/channel.")
+    # FIXME
     discord_parser.set_defaults(sender_func=discord_sender)
 
     # Email

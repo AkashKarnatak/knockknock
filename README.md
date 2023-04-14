@@ -192,10 +192,11 @@ Thanks to [@watkinsm](https://github.com/watkinsm), you can also use Discord to 
 #### Python
 
 ```python
-from knockknock import discord_sender
+from knockknock import DiscordSender
 
 webhook_url = "<webhook_url_to_your_discord_channel>"
-@discord_sender(webhook_url=webhook_url)
+ds = DiscordSender(webhook_url)
+@ds.discord_sender
 def train_your_nicest_model(your_nicest_parameters):
     import time
     time.sleep(10000)

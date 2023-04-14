@@ -1,5 +1,5 @@
 from knockknock.chime_sender import chime_sender
-from knockknock.discord_sender import discord_sender
+from knockknock.discord_sender import DiscordSender
 from knockknock.email_sender import email_sender
 from knockknock.slack_sender import slack_sender
 from knockknock.sms_sender import sms_sender
